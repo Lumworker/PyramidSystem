@@ -1,0 +1,176 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PyramidSystem.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/font-awesome.css" rel="stylesheet" />
+    <link href="Content/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="Content/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-select.css" rel="stylesheet" />
+    <link href="DataTables/datatables.css" rel="stylesheet" />
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <script src="../Scripts/bootstrap-datepicker.min.js"></script>
+        <script src="../Scripts/jquery-confirm.min.js"></script>
+        <script src="../Scripts/bootstrap-select.js"></script>
+         <script src="../DataTables/datatables.js"></script>
+
+        <style>
+            .navbar {
+                background-image: linear-gradient(#54B4EB, #2FA4E7 60%, #1D9CE5);
+                background-repeat: no-repeat;
+                border-bottom: 1px solid #178ACC;
+                box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 0px;
+            }
+
+            .navbar-default {
+                background-color: #2FA4E7;
+                border-color: #1995DC;
+            }
+
+                .navbar-default .navbar-brand,
+                .navbar-default .navbar-brand:hover,
+                .navbar-default .navbar-brand:focus,
+                .navbar-default .navbar-nav > li > a {
+                    color: #FFF;
+                }
+
+                    .navbar-default .navbar-nav > li > a:hover,
+                    .navbar-default .navbar-nav > li > a:focus {
+                        color: #FFF;
+                        background-color: #178ACC;
+                    }
+
+                .navbar-default .navbar-toggle:hover,
+                .navbar-default .navbar-toggle:focus {
+                    background-color: #178ACC;
+                }
+
+                .navbar-default .navbar-toggle {
+                    border-color: #178ACC;
+                }
+
+                    .navbar-default .navbar-toggle .icon-bar {
+                        background-color: #FFF;
+                    }
+        </style>
+
+        <div>
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container-fluid">
+                    <!--header section -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" style="margin-left: 50px">PYRAMID SYSTEM </a>
+
+                    </div>
+                    <!-- menu section -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <%--<li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Project
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+
+                                <li><a id="DraftTask" href="javascript:void(0)">Draft Task</a></li>
+                                <li><a id="DraftBud" href="javascript:void(0)">Draft Budget Resource</a></li>
+                                <li><a id="DraftMat" href="javascript:void(0)">Draft Inventory Resource</a></li>
+                                <li><a id="AddTask" href="javascript:void(0)">Add Task</a></li>
+                                <li><a id="AddBud" href="javascript:void(0)">Add Budget Resource</a></li>
+                                <li><a id="AddMat" href="javascript:void(0)">Add Inventory Resource</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Purchasing
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="PRReq" href="javascript:void(0)">Purchase Requestion</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Material Process 
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="MatIssue" href="javascript:void(0)">Material Issue</a></li>
+                                <li><a id="MatReturn" href="javascript:void(0)">Material Return</a></li>
+                                <li><a id="MatDel" href="javascript:void(0)">Material Delete</a></li>
+                                <li><a id="MIAPickList" href="javascript:void(0)">MIA Pick List</a></li>
+                            </ul>
+                        </li>
+
+
+                         <li class="dropdown" id="IT">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">IT 
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="PROrderReq" href="javascript:void(0)">Purchase Order Requisitions</a></li>
+
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <div style="background-color: #b3e6ff; margin-top: 15px; margin-left: 10px; margin-bottom: 15px; border-radius: 10Px; width: 80px">
+                                <center>
+                                 <a id="Logout" style="text-align:center;font-size:13px" href="javascript:void(0)">Logout  <i class="fa fa-sign-out"></i></a>
+                                  </center>
+                            </div>
+
+                        </li>--%>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container body-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+                <hr />
+                <%-- <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            </footer>--%>
+            </div>
+        </div>
+
+
+
+    </form>
+</body>
+</html>
